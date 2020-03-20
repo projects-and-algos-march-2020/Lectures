@@ -24,6 +24,21 @@ class SLL {
         newNode.next = this.head;
         this.head = newNode;
     }
+    size() {
+        var sum = 0;
+        var current = this.head;
+        while(current) {
+            sum += 1;
+            current = current.next;
+        }
+        return sum;
+    }
+    rSize(node=this.head) {
+        if(node === null) {
+            return 0;
+        }
+        return 1 + this.rSize(node.next);
+    }
     addToBack(value) {
         var newNode = new Node(value);
         var current = this.head;
@@ -76,5 +91,4 @@ var myList = new SLL();
 myList.addToFront(15);
 myList.addToFront(23);
 myList.addToFront(25);
-myList.addToBack(32);
-myList.displayValues();
+myList.rSize();
